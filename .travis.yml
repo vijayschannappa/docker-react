@@ -7,4 +7,19 @@ before install:
 
 script:
   - docker run vijaysc/docker-react np run test -- --covergae
-  
+
+
+deploy:
+  provider: elasticbeanstalk
+  region: #add a region froM AWS console
+  app: docker #app name entered on AWS
+  env: "Docker-env" #from aws console
+  bucket_name: #get from aws console 
+  bucket_path: docker  #equals to app name                    
+  on: 
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY" #store aws access key and secret key on travis ci 
+
+    
