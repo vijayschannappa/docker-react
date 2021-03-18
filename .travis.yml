@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+
+before install:
+  - docker build -t vijaysc/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run vijaysc/docker-react np run test -- --covergae
+  
